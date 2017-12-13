@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookCheckInCheckOut.Web", "BookCheckInCheckOut.Web\BookCheckInCheckOut.Web.csproj", "{3FD875F2-9058-47F3-B9D8-D0C94FF0015C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookCheckInCheckOut.Data", "BookCheckInCheckOut.Data\BookCheckInCheckOut.Data.csproj", "{138ECF2B-9D97-4F10-9DE3-CDDD004A4762}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookCheckInCheckOut.Business", "BookCheckInCheckOut.Business\BookCheckInCheckOut.Business.csproj", "{7F6ECBC1-027A-4F4B-87B1-C8B0FB7363B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FD875F2-9058-47F3-B9D8-D0C94FF0015C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FD875F2-9058-47F3-B9D8-D0C94FF0015C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FD875F2-9058-47F3-B9D8-D0C94FF0015C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FD875F2-9058-47F3-B9D8-D0C94FF0015C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{138ECF2B-9D97-4F10-9DE3-CDDD004A4762}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{138ECF2B-9D97-4F10-9DE3-CDDD004A4762}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{138ECF2B-9D97-4F10-9DE3-CDDD004A4762}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{138ECF2B-9D97-4F10-9DE3-CDDD004A4762}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F6ECBC1-027A-4F4B-87B1-C8B0FB7363B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F6ECBC1-027A-4F4B-87B1-C8B0FB7363B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F6ECBC1-027A-4F4B-87B1-C8B0FB7363B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F6ECBC1-027A-4F4B-87B1-C8B0FB7363B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
+	EndGlobalSection
+EndGlobal
