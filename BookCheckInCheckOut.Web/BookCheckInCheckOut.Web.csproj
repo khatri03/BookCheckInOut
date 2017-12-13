@@ -65,6 +65,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Contents\material-lite\assets\images\favicon.png" />
     <Content Include="Controls\_Footer.ascx" />
     <Content Include="Controls\_SideBarFooter.ascx" />
     <Content Include="packages.config" />
@@ -87,7 +88,7 @@
     <Content Include="Contents\material-lite\assets\images\big\img5.jpg" />
     <Content Include="Contents\material-lite\assets\images\big\img6.jpg" />
     <Content Include="Contents\material-lite\assets\images\custom-select.png" />
-    <Content Include="Contents\material-lite\assets\images\favicon.png" />
+    <Content Include="Contents\material-lite\assets\images\favicon.old.png" />
     <Content Include="Contents\material-lite\assets\images\logo-light-icon.png" />
     <Content Include="Contents\material-lite\assets\images\logo-light-text.png" />
     <Content Include="Contents\material-lite\assets\images\users\1.jpg" />
@@ -747,6 +748,9 @@
     </Compile>
     <Compile Include="Controls\_TopBar.ascx.designer.cs">
       <DependentUpon>_TopBar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\BaseUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
