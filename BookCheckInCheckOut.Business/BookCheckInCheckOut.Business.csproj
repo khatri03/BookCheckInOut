@@ -80,6 +80,7 @@
     <Compile Include="Book.cs" />
     <Compile Include="Borrower.cs" />
     <Compile Include="BusinessLogicDBOperations.cs" />
+    <Compile Include="BusinessLogicExceptionOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,7 @@ namespace BookCheckInCheckOut.Data
             {
                 base.initialize();
             }
-            catch
+            catch(Exception ex)
             {
                 //do logging.
 
@@ -40,7 +40,7 @@ namespace BookCheckInCheckOut.Data
             {
                 throw new Exception("Oops! Something went wrong.");
             }
-            catch
+            catch(Exception ex)
             {
                 //Do logging..
 
@@ -232,5 +232,6 @@ namespace BookCheckInCheckOut.Data
         public const string SP_BookBorrowerDetails = "usp_getBorrowerDetails";
         public const string SP_CheckIn = "usp_CheckInBook";
         public const string SP_CheckOut = "usp_CheckOutBook";
+        public const string SP_SaveException = "usp_SaveException";
     }
 }
