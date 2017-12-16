@@ -37,6 +37,7 @@ namespace BookCheckInCheckOut.Business
                         PublishYear = (string)reader["PublishYear"],
                         CoverPrice = (decimal)reader["CoverPrice"],
                         CheckOutStatusDescription = (string)reader["CheckOutStatusDescription"]
+                        , CurrentBorrowerID = Convert.ToString(reader["CurrentBorrowerID"])
                     });
                 }
             }

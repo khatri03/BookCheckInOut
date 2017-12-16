@@ -91,7 +91,7 @@ namespace BookCheckInCheckOut.Web
                 
                 
                 double penaltyAmount = 0;
-                int iExceedDaysCount = borrower.ReturnDate.CountBusinessDaysFrom(DateTime.Now);
+                int iExceedDaysCount = borrower.ReturnDate.AddDays(1).CountBusinessDaysFrom(DateTime.Now);
                 if (iExceedDaysCount > 0)
                 {
                     penaltyAmount = iExceedDaysCount * base.PenalityAmount;
