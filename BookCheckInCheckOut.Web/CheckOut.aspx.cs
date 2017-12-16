@@ -22,6 +22,18 @@ namespace BookCheckInCheckOut.Web
         }
         #endregion
 
+        protected bool CheckedOutSuccessfully
+        {
+            get
+            {
+                return base.GetViewState<bool>("CheckedOutSuccessfully", false);
+            }
+            set
+            {
+                base.SetViewState<bool>("CheckedOutSuccessfully", value);
+            }
+        }
+
         private int prmBookId
         {
             get
@@ -76,9 +88,10 @@ namespace BookCheckInCheckOut.Web
         {
             if(SelectedBook != null)
             {
-                txtCheckoutDate.Text = DateTime.Now.ToString(Constants.DATE_TIME_FORMAT);
+                txtBookTitle.Text = SelectedBook.Title;
+                txtCheckoutDate.Text = DateTime.Now.ToString(Constants.DATE_FORMAT);
                 DateTime returnDate = DateTime.Now.BusinessDays(base.BookReturnDays);
-                txtCheckinDate.Text = returnDate.ToString(Constants.DATE_TIME_FORMAT);
+                txtCheckinDate.Text = returnDate.ToString(Constants.DATE_FORMAT);
             }
         }
 
@@ -121,6 +134,7 @@ namespace BookCheckInCheckOut.Web
                     {
                         base.SetPageMessage("Book has been checked out in the name of " + txtBorrowerName.Text, Utilities.Utilities.Severity.success);
                         _CheckOutHistory.Refresh();
+                        CheckedOutSuccessfully = true;
                     }
                 }
             }

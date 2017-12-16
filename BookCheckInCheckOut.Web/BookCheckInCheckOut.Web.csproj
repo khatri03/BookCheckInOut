@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BookDetail.aspx" />
+    <Content Include="CheckIn.aspx" />
     <Content Include="CheckOut.aspx" />
     <Content Include="Contents\bookinout.css" />
     <Content Include="Contents\material-lite\assets\images\favicon.png" />
@@ -711,6 +712,13 @@
     </Compile>
     <Compile Include="BookDetail.aspx.designer.cs">
       <DependentUpon>BookDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CheckIn.aspx.cs">
+      <DependentUpon>CheckIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CheckIn.aspx.designer.cs">
+      <DependentUpon>CheckIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="CheckOut.aspx.cs">
       <DependentUpon>CheckOut.aspx</DependentUpon>

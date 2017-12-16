@@ -93,7 +93,15 @@ namespace BookCheckInCheckOut.Web.Core
         {
             get
             {
-                return GetAppSetting<int>(Constants.BOOK_RETURN_DAYS, 15);
+                return GetAppSetting<int>(Constants.PENALITY_AMOUNT, 5);
+            }
+        }
+
+        protected int PenalityAmount
+        {
+            get
+            {
+                return GetAppSetting<int>(Constants.PENALITY_AMOUNT, 5);
             }
         }
 

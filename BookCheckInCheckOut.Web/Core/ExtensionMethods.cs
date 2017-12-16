@@ -7,6 +7,22 @@ namespace BookCheckInCheckOut.Web.Core
 {
     public static class ExtensionMethods
     {
+
+        private static List<DayOfWeek> _lstWeekEnds = null;
+        private static List<DayOfWeek> lstWeekEnds
+        {
+            get
+            {
+                if(_lstWeekEnds == null)
+                {
+                    _lstWeekEnds = new List<DayOfWeek>() {
+                        DayOfWeek.Saturday
+                        , DayOfWeek.Sunday
+                    };
+                }
+                return _lstWeekEnds;
+            }
+        }
         public static DateTime AddBusinessDays(this DateTime current, int days)
         {
             var sign = Math.Sign(days);
@@ -60,10 +76,7 @@ namespace BookCheckInCheckOut.Web.Core
         {
             int unSigned = Math.Abs(iDays);
             int iCount = 0;
-            List<DayOfWeek> lstWeekEnds = new List<DayOfWeek>() {
-                DayOfWeek.Saturday
-                , DayOfWeek.Sunday
-            };
+            
             while (iCount < iDays)
             {
                 currentDate = currentDate.AddDays(1);
@@ -75,6 +88,28 @@ namespace BookCheckInCheckOut.Web.Core
                 
             }
             return currentDate;
+        }
+
+        public static int CountBusinessDaysFrom(this DateTime fromDate, DateTime toDate)
+        {
+            int iCount = 0;
+            if(toDate > fromDate)
+            {
+                double iTotalDays = (toDate - fromDate).TotalDays;
+                if(iTotalDays > 0)
+                {
+                    while(fromDate <= toDate)
+                    {
+                        DayOfWeek currenDay = fromDate.DayOfWeek;
+                        if(!lstWeekEnds.Contains(currenDay))
+                        {
+                            iCount++;
+                        }
+                        fromDate = fromDate.AddDays(1);
+                    }
+                }
+            }
+            return iCount;
         }
     }
 }

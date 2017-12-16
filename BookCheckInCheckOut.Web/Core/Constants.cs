@@ -8,5 +8,7 @@ public class Constants
     public const string CURRENCY_FORMAT = "{0:C}";
     public const string ERROR_MESSAGE = "Oops!!! Something went wrong.";
     public const string DATE_TIME_FORMAT = "MM/dd/yyyy hh:mm";
+    public const string DATE_FORMAT = "MM/dd/yyyy";
     public const string BOOK_RETURN_DAYS = "BookReturnDays";
+    public const string PENALITY_AMOUNT = "PenalityAmount";
 }

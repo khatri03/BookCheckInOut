@@ -7,6 +7,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
+        <div class="col-md-6 form-group">
+            <label for="<%=txtBookTitle.ClientID %>">Book Title:</label>
+            <asp:TextBox ID="txtBookTitle" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
+        </div>        
+    </div>
+    <div class="row">
         <div class="col-md-6 form-group text-left">
             <label for="<%=txtBorrowerName.ClientID %>">Borrower Name:</label>
             <asp:TextBox ID="txtBorrowerName" runat="server" CssClass="form-control" ></asp:TextBox>
@@ -23,7 +29,7 @@
         </div>
         <div class="col-md-3 form-group text-left">
             <label for="<%=txtNationalId.ClientID %>">National ID:</label>
-            <asp:TextBox ID="txtNationalId" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="txtNationalId" runat="server" CssClass="form-control" MaxLength="11"></asp:TextBox>
             <asp:RequiredFieldValidator CssClass="Errortext" ID="RFDNationalID" runat="server" ControlToValidate="txtNationalId" ErrorMessage="National ID is required."></asp:RequiredFieldValidator>
                 <br /><asp:RegularExpressionValidator CssClass="Errortext" Display="Dynamic" ID="RENationalID" runat="server" ErrorMessage="National ID should be numeric with 11 digits."
                     ControlToValidate="txtNationalId" ValidationExpression="\d{11}"></asp:RegularExpressionValidator>
@@ -50,4 +56,15 @@
             <uc1:_CheckOutHistory runat="server" ID="_CheckOutHistory" />
         </div>
     </div>
+    <%if (this.CheckedOutSuccessfully)
+        { %>
+    <script src="<%=ResolveClientUrl("~/Scripts/jquery-1.12.4.js") %>"></script>
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            setTimeout(function () {
+                window.location.href = '<%=ResolveClientUrl("~/HomePage.aspx")%>'
+            }, 2000);
+        })
+    </script>
+    <%} %>
 </asp:Content>
