@@ -12,7 +12,7 @@ namespace BookCheckInCheckOut.Web.Controls
     public partial class _CheckOutHistory : BaseUserControl
     {
         private List<Borrower> _BorrowerHistory = null;
-        private List<Borrower> BorrowerHistory
+        protected List<Borrower> BorrowerHistory
         {
             get
             {

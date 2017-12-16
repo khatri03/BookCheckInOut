@@ -17,7 +17,7 @@ namespace BookCheckInCheckOut.Web
         {
             get
             {
-                return "Bool Detail";
+                return "Book Detail";
             }
         }
         #endregion

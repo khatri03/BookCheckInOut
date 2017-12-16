@@ -9,6 +9,14 @@
             </tr>
         </thead>
         <tbody>
+            <%if (BorrowerHistory == null || BorrowerHistory.Count <= 0)
+                { %>
+            <tr>
+                <td colspan="3" style="text-align: center">No checkout history found.</td>
+            </tr>
+            <%}
+    else
+    { %>
             <asp:ListView ID="HistoryList" runat="server" ClientIDMode="Static">
                 <ItemTemplate>
                     <tr>
@@ -18,6 +26,8 @@
                     </tr>
                 </ItemTemplate>
             </asp:ListView>
+            <%} %>
+            
         </tbody>
     </table>
     <asp:HiddenField ID="hdnField" runat="server" ClientIDMode="Static" />

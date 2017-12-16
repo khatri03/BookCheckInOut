@@ -3,8 +3,15 @@
 <!-- ============================================================== -->
 <!-- Bread crumb and right sidebar toggle -->
 <!-- ============================================================== -->
+<style type="text/css">
+    
+}
+
+</style>
 <div class="row page-titles">
+    <a href="<%=ResolveClientUrl("~/HomePage.aspx") %>" class="home-page" title="Back to Home"></a>
     <div class="col-md-5 col-8 align-self-center">
+        
         <h3 class="text-themecolor m-b-0 m-t-0"><%=this.PageTitle %></h3>
         <%--<ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>

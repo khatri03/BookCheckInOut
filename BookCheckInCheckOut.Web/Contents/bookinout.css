@@ -17,8 +17,21 @@ input[type="button"]:disabled, input[type="submit"]:disabled {
     margin-left: 0px !important;
 }
 
-div.table-responsive
-{
+div.table-responsive {
     max-height: 350px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
+
+.footer
+{
+    left: 0px !important;
+}
+
+a.home-page {
+    background: url('/Contents/material-lite/assets/images/favicon.png') left center no-repeat;
+    padding-left: 30px;
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+    text-decoration: none;
+    vertical-align: text-center;
