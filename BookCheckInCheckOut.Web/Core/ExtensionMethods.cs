@@ -55,5 +55,26 @@ namespace BookCheckInCheckOut.Web.Core
 
             return businessDays;
         }
+
+        public static DateTime BusinessDays(this DateTime currentDate, int iDays)
+        {
+            int unSigned = Math.Abs(iDays);
+            int iCount = 0;
+            List<DayOfWeek> lstWeekEnds = new List<DayOfWeek>() {
+                DayOfWeek.Saturday
+                , DayOfWeek.Sunday
+            };
+            while (iCount < iDays)
+            {
+                currentDate = currentDate.AddDays(1);
+                DayOfWeek currentDay = currentDate.DayOfWeek;
+                if(!lstWeekEnds.Contains(currentDay))
+                {
+                    iCount++;
+                }
+                
+            }
+            return currentDate;
+        }
     }
 }

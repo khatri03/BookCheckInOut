@@ -43,6 +43,11 @@ namespace BookCheckInCheckOut.Web.Controls
             HistoryList.DataBind();
         }
 
+        public void Refresh()
+        {
+            BindBookBorrowHistory();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)

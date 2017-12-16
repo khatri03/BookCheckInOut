@@ -34,4 +34,11 @@ a.home-page {
     width: 25px;
     display: inline-block;
     text-decoration: none;
-    vertical-align: text-center;
+    vertical-align: middle;
+}
+
+.Errortext
+{
+    color: red;
+    font-size: 12px;
+}

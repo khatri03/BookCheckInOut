@@ -54,19 +54,14 @@ namespace BookCheckInCheckOut.Web.Core
             ViewState[sVsKey] = value;
         }
 
-        protected T GetSession<T>(string sKey, T defaultValue)
+        protected T GetAppSetting<T>(string sKey, T defaultValue)
         {
-            string sVsKey = string.Concat(this.ClientID, "_", sKey);
-            if (Session[sVsKey] == null)
+            string sVal = System.Configuration.ConfigurationManager.AppSettings[sKey];
+            if(string.IsNullOrEmpty(sVal))
             {
-                return defaultValue;
+                return (T)Convert.ChangeType(defaultValue, typeof(T));
             }
-            return (T)Convert.ChangeType(ViewState[sVsKey], typeof(T));
-        }
-        protected void SetSession<T>(string sKey, T value)
-        {
-            string sVsKey = string.Concat(this.ClientID, "_", sKey);
-            Session[sVsKey] = value;
+            return (T) Convert.ChangeType(sVal, typeof(T));
         }
 
         private BusinessLogicDBOperations _db = null;
@@ -91,6 +86,14 @@ namespace BookCheckInCheckOut.Web.Core
                     return master.FindControl("lblMessage") as Label;
                 }
                 return null;
+            }
+        }
+
+        protected int BookReturnDays
+        {
+            get
+            {
+                return GetAppSetting<int>(Constants.BOOK_RETURN_DAYS, 15);
             }
         }
 

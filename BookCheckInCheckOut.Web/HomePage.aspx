@@ -49,6 +49,7 @@
     <script src="<%=ResolveClientUrl("~/Scripts/jquery-1.12.4.js") %>"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            $('#booklist').find(':radio:checked').prop('checked', false);
             disableActionButtons();
         })
         function disableActionButtons() {

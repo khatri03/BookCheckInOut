@@ -82,6 +82,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="WebSettings.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Contents\material-lite\assets\images\background\profile-bg.jpg" />
