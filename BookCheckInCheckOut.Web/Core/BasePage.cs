@@ -1,4 +1,6 @@
 ﻿using BookCheckInCheckOut.Business;
+using BookCheckInCheckOut.Web.Controls;
+using BookCheckInCheckOut.Web.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +22,20 @@ namespace BookCheckInCheckOut.Web.Core
                     _master = Master as MasterPage;
                 }
                 return _master;
+            }
+        }
+
+        private _PageTitles _PageTitles = null;
+        private _PageTitles PageTitleControl
+        {
+            get
+            {
+                if(this.master != null)
+                {
+                    _PageTitles = master.FindControl("_PageTitles") as _PageTitles;
+                    return _PageTitles;
+                }
+                return null;
             }
         }
 
@@ -86,6 +102,22 @@ namespace BookCheckInCheckOut.Web.Core
                         lblMessage.ForeColor = System.Drawing.Color.Green;
                         break;
                 }
+            }
+        }
+
+        protected void SetPageTitle(string sTitle)
+        {
+            if(this.PageTitleControl != null)
+            {
+                this.PageTitleControl.PageTitle = sTitle;
+            }
+        }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            if (this is IHeaderTitle)
+            {
+                SetPageTitle(((IHeaderTitle)this).PageHeader);
             }
         }
     }

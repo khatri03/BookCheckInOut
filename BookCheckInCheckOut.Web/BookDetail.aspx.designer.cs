@@ -10,51 +10,51 @@
 namespace BookCheckInCheckOut.Web {
     
     
-    public partial class HomePage {
+    public partial class BookDetail {
         
         /// <summary>
-        /// BooksList control.
+        /// txtBookTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView BooksList;
+        protected global::System.Web.UI.WebControls.TextBox txtBookTitle;
         
         /// <summary>
-        /// hdnField control.
+        /// txtISBN control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnField;
+        protected global::System.Web.UI.WebControls.TextBox txtISBN;
         
         /// <summary>
-        /// btnCheckIn control.
+        /// txtPublishYear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCheckIn;
+        protected global::System.Web.UI.WebControls.TextBox txtPublishYear;
         
         /// <summary>
-        /// btnCheckOut control.
+        /// txtCoverPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCheckOut;
+        protected global::System.Web.UI.WebControls.TextBox txtCoverPrice;
         
         /// <summary>
-        /// btnBookDetail control.
+        /// txtStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBookDetail;
+        protected global::System.Web.UI.WebControls.TextBox txtStatus;
     }
 }

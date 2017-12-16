@@ -1,5 +1,6 @@
 ﻿using BookCheckInCheckOut.Business;
 using BookCheckInCheckOut.Web.Core;
+using BookCheckInCheckOut.Web.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,20 @@ using System.Web.UI.WebControls;
 
 namespace BookCheckInCheckOut.Web
 {
-    public partial class HomePage : BasePage
+    public partial class HomePage : BasePage, IHeaderTitle
     {
-        private const string BOOK_SELECT_MESSAGE = "Please select the book first.";        
+        private const string BOOK_SELECT_MESSAGE = "Please select the book first.";
+
+        #region IHeaderTitle Members
+        public string PageHeader
+        {
+            get
+            {
+                return "Book Check In/Out List";
+            }
+        }
+        #endregion
+
 
         private List<Book> _Books = null;
         private List<Book> Books

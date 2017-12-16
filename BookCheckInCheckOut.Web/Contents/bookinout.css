@@ -1,0 +1,18 @@
+﻿input[type="button"]:enabled, input[type="submit"]:enabled {
+    cursor: pointer;
+}
+
+.table th
+{
+    text-align: center;
+}
+
+input[type="button"]:disabled, input[type="submit"]:disabled {
+    cursor: not-allowed;
+    background-color: gray;
+    border: solid 1px gray;
+}
+.page-wrapper
+{
+    margin-left: 0px !important;
+}
