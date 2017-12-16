@@ -20,7 +20,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<%=string.Concat(ResolveClientUrl("~/Contents/material-lite/assets/images/favicon.png"), "?v=", DateTime.Now.Ticks.ToString())%>">
-    <title>Book Check In/Out</title>
+    <title><%=this.PageHeader %></title>
     <!-- Bootstrap Core CSS -->
     <link href="<%=ResolveClientUrl("~/Contents/material-lite/assets/plugins/bootstrap/css/bootstrap.min.css") %>" rel="stylesheet">
     <!-- Custom CSS -->

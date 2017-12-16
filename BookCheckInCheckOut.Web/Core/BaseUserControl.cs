@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookCheckInCheckOut.Business;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,6 +8,18 @@ namespace BookCheckInCheckOut.Web.Core
 {
     public class BaseUserControl : System.Web.UI.UserControl
     {
+        private BusinessLogicDBOperations _db = null;
+        protected BusinessLogicDBOperations db
+        {
+            get
+            {
+                if (_db == null)
+                {
+                    _db = new BusinessLogicDBOperations();
+                }
+                return _db;
+            }
+        }
 
         public T GetViewState<T>(string sKey, T defaultValue)
         {

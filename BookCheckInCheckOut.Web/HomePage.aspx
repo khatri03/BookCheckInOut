@@ -28,7 +28,7 @@
                                     <td class="text"><%# Eval("Title") %></td>
                                     <td class="text"><%# Eval("ISBN") %> </td>
                                     <td class="text-center"><%# Eval("PublishYear") %> </td>
-                                    <td class="text-right"><%# string.Format("{0:C}", Eval("CoverPrice"))  %> </td>
+                                    <td class="text-right"><%# string.Format(Constants.CURRENCY_FORMAT, Eval("CoverPrice"))  %> </td>
                                     <td class="text-center"><%# Eval("CheckOutStatusDescription") %> </td>
                                 </tr>
                             </ItemTemplate>

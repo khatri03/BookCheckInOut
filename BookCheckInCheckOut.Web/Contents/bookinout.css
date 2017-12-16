@@ -16,3 +16,9 @@ input[type="button"]:disabled, input[type="submit"]:disabled {
 {
     margin-left: 0px !important;
 }
+
+div.table-responsive
+{
+    max-height: 350px;
+    overflow-y: scroll;
+}

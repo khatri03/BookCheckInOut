@@ -54,6 +54,21 @@ namespace BookCheckInCheckOut.Web.Core
             ViewState[sVsKey] = value;
         }
 
+        protected T GetSession<T>(string sKey, T defaultValue)
+        {
+            string sVsKey = string.Concat(this.ClientID, "_", sKey);
+            if (Session[sVsKey] == null)
+            {
+                return defaultValue;
+            }
+            return (T)Convert.ChangeType(ViewState[sVsKey], typeof(T));
+        }
+        protected void SetSession<T>(string sKey, T value)
+        {
+            string sVsKey = string.Concat(this.ClientID, "_", sKey);
+            Session[sVsKey] = value;
+        }
+
         private BusinessLogicDBOperations _db = null;
         protected BusinessLogicDBOperations db
         {
@@ -119,6 +134,7 @@ namespace BookCheckInCheckOut.Web.Core
             {
                 SetPageTitle(((IHeaderTitle)this).PageHeader);
             }
+            
         }
     }
 }
