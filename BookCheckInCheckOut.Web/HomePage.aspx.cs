@@ -41,7 +41,16 @@ namespace BookCheckInCheckOut.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            DisplayBooks();
+            try
+            {
+                DisplayBooks();
+            }
+            catch (Exception ex)
+            {
+                base.logger.SaveException(ex.Message);
+                base.SetPageMessage(ex.Message, Utilities.Utilities.Severity.error);
+                return;
+            }
         }
 
         protected void btnCheckOut_Click(object sender, EventArgs e)
@@ -65,13 +74,22 @@ namespace BookCheckInCheckOut.Web
 
         protected void btnCheckIn_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(hdnField.Value))
+            try
             {
-                base.SetPageMessage(BOOK_SELECT_MESSAGE, Utilities.Utilities.Severity.error);
+                if (String.IsNullOrWhiteSpace(hdnField.Value))
+                {
+                    base.SetPageMessage(BOOK_SELECT_MESSAGE, Utilities.Utilities.Severity.error);
+                    return;
+                }
+
+                Response.Redirect("CheckIn.aspx?bookID=" + int.Parse(hdnField.Value));
+            }
+            catch (Exception ex)
+            {
+                base.logger.SaveException(ex.Message);
+                base.SetPageMessage(ex.Message, Utilities.Utilities.Severity.error);
                 return;
             }
-
-            Response.Redirect("CheckIn.aspx?bookID=" + int.Parse(hdnField.Value));
         }
 
 
@@ -97,13 +115,22 @@ namespace BookCheckInCheckOut.Web
 
         protected void btnBookDetail_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(hdnField.Value))
+            try
             {
-                base.SetPageMessage(BOOK_SELECT_MESSAGE, Utilities.Utilities.Severity.error);
+                if (String.IsNullOrWhiteSpace(hdnField.Value))
+                {
+                    base.SetPageMessage(BOOK_SELECT_MESSAGE, Utilities.Utilities.Severity.error);
+                    return;
+                }
+
+                Response.Redirect(string.Concat("BookDetail.aspx?bookID=", int.Parse(hdnField.Value)));
+            }
+            catch (Exception ex)
+            {
+                base.logger.SaveException(ex.Message);
+                base.SetPageMessage(ex.Message, Utilities.Utilities.Severity.error);
                 return;
             }
-
-            Response.Redirect(string.Concat("BookDetail.aspx?bookID=", int.Parse(hdnField.Value)));
         }
     }
 }

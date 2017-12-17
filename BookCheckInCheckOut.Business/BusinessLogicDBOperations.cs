@@ -7,103 +7,144 @@ using System.Web;
 
 namespace BookCheckInCheckOut.Business
 {
-    public class BusinessLogicDBOperations
+    public class BusinessLogicDBOperations : BaseBusinessLogic
     {
 
         public List<Book> RetrieveBooksList()
         {
-            List<Book> books = null;
-
-            BookCheckInCheckOutDBOperations db = BookCheckInCheckOutDBOperations.getInstance();
-
-            IDataReader reader = db.RetrieveBooksList();
-
-            DataTable dt = SchemaInfo.CreateBookDetailsSchemaTable();
-
-
-            if (reader != null)
+            try
             {
-                books = new List<Book>();
+                List<Book> books = null;
 
-                while (reader.Read())
+                BookCheckInCheckOutDBOperations db = BookCheckInCheckOutDBOperations.getInstance();
+
+                IDataReader reader = db.RetrieveBooksList();
+
+                DataTable dt = SchemaInfo.CreateBookDetailsSchemaTable();
+
+
+                if (reader != null)
                 {
+                    books = new List<Book>();
 
-
-                    books.Add(new Book
+                    while (reader.Read())
                     {
-                        BookID = (int)reader["BookID"],
-                        Title = (string)reader["Title"],
-                        ISBN = (string)reader["ISBN"],
-                        PublishYear = (string)reader["PublishYear"],
-                        CoverPrice = (decimal)reader["CoverPrice"],
-                        CheckOutStatusDescription = (string)reader["CheckOutStatusDescription"]
-                        , CurrentBorrowerID = Convert.ToString(reader["CurrentBorrowerID"])
-                    });
+
+
+                        books.Add(new Book
+                        {
+                            BookID = (int)reader["BookID"],
+                            Title = (string)reader["Title"],
+                            ISBN = (string)reader["ISBN"],
+                            PublishYear = (string)reader["PublishYear"],
+                            CoverPrice = (decimal)reader["CoverPrice"],
+                            CheckOutStatusDescription = (string)reader["CheckOutStatusDescription"]
+                            ,
+                            CurrentBorrowerID = Convert.ToString(reader["CurrentBorrowerID"])
+                        });
+                    }
                 }
+
+
+
+                return books;
             }
-
-
-
-            return books;
+            catch (Exception ex)
+            {
+                base.logger.SaveException(ex.Message);
+            }
+            return null;
         }
 
         public List<Borrower> RetrieveBookCheckOutHistory(int BookID)
         {
-            List<Borrower> borrowers = null;
-            BookCheckInCheckOutDBOperations db = BookCheckInCheckOutDBOperations.getInstance();
-
-            IDataReader reader = db.RetrieveBookCheckOutHistory(BookID);
-
-            if (reader != null)
+            try
             {
-                borrowers = new List<Borrower>();
+                List<Borrower> borrowers = null;
+                BookCheckInCheckOutDBOperations db = BookCheckInCheckOutDBOperations.getInstance();
 
-                while (reader.Read())
+                IDataReader reader = db.RetrieveBookCheckOutHistory(BookID);
+
+                if (reader != null)
                 {
-                    borrowers.Add(new Borrower
-                    {
-                        Name = (string)reader["Name"],
-                        CheckOutDate = (DateTime)reader["CheckOutDate"],
-                        ReturnDate = (DateTime)reader["ReturnDate"]
-                    });
-                }
-            }
+                    borrowers = new List<Borrower>();
 
-            return borrowers;
+                    while (reader.Read())
+                    {
+                        borrowers.Add(new Borrower
+                        {
+                            Name = (string)reader["Name"],
+                            CheckOutDate = (DateTime)reader["CheckOutDate"],
+                            ReturnDate = (DateTime)reader["ReturnDate"]
+                        });
+                    }
+                }
+
+                return borrowers;
+            }
+            catch (Exception ex)
+            {
+                base.logger.SaveException(ex.Message);
+            }
+            return null;
         }
 
         public Borrower RetrieveBookBorrowerDetails(int BookID)
         {
-            Borrower borrower = null;
+            try
+            {
+                Borrower borrower = null;
 
-            BookCheckInCheckOutDBOperations db = BookCheckInCheckOutDBOperations.getInstance();
+                BookCheckInCheckOutDBOperations db = BookCheckInCheckOutDBOperations.getInstance();
 
-            IDataReader reader = db.RetrieveBookBorrowerDetails(BookID);
+                IDataReader reader = db.RetrieveBookBorrowerDetails(BookID);
 
-            if (reader != null)
-                if (reader.Read())
-                {
-                    borrower = new Borrower();
-                    borrower.Name = (string)reader["Name"];
-                    borrower.MobileNo = (string)reader["Mobile"];
-                    borrower.ReturnDate = (DateTime)reader["ReturnDate"];
-                }
+                if (reader != null)
+                    if (reader.Read())
+                    {
+                        borrower = new Borrower();
+                        borrower.Name = (string)reader["Name"];
+                        borrower.MobileNo = (string)reader["Mobile"];
+                        borrower.ReturnDate = (DateTime)reader["ReturnDate"];
+                    }
 
-            return borrower;
+                return borrower;
+            }
+            catch (Exception ex)
+            {
+                base.logger.SaveException(ex.Message);
+            }
+            return null;
         }
 
         public int CheckIn(int bookID)
         {
-            BookCheckInCheckOutDBOperations db = BookCheckInCheckOutDBOperations.getInstance();
+            try
+            {
+                BookCheckInCheckOutDBOperations db = BookCheckInCheckOutDBOperations.getInstance();
 
-            return db.CheckIn(bookID);
+                return db.CheckIn(bookID);
+            }
+            catch (Exception ex)
+            {
+                base.logger.SaveException(ex.Message);
+            }
+            return -1;
         }
 
         public int CheckOut(int bookID, string Name, string MobileNo, string NationalID, DateTime checkOutDate, DateTime ReturnDate)
         {
-            BookCheckInCheckOutDBOperations db = BookCheckInCheckOutDBOperations.getInstance();
+            try
+            {
+                BookCheckInCheckOutDBOperations db = BookCheckInCheckOutDBOperations.getInstance();
 
-            return db.CheckOut(bookID, Name, MobileNo, NationalID, checkOutDate, ReturnDate);
+                return db.CheckOut(bookID, Name, MobileNo, NationalID, checkOutDate, ReturnDate);
+            }
+            catch (Exception ex)
+            {
+                base.logger.SaveException(ex.Message);
+            }
+            return -1;
         }
     }
 }

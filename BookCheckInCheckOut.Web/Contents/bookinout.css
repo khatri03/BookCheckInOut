@@ -42,3 +42,7 @@ a.home-page {
     color: red;
     font-size: 12px;
 }
+
+.page-message{
+    font-weight: bold;
+}

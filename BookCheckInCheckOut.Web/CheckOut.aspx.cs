@@ -86,7 +86,7 @@ namespace BookCheckInCheckOut.Web
 
         private void FillData()
         {
-            if(SelectedBook != null)
+            if (SelectedBook != null)
             {
                 txtBookTitle.Text = SelectedBook.Title;
                 txtCheckoutDate.Text = DateTime.Now.ToString(Constants.DATE_FORMAT);
@@ -97,46 +97,64 @@ namespace BookCheckInCheckOut.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-                if(prmBookId <= 0)
+                try
                 {
-                    base.SetPageMessage("Book detail not found", Utilities.Utilities.Severity.error);
+                    if (prmBookId <= 0)
+                    {
+                        base.SetPageMessage("Book detail not found", Utilities.Utilities.Severity.error);
+                    }
+                    else
+                    {
+                        FillData();
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    FillData();
+                    base.logger.SaveException(ex.Message);
+                    base.SetPageMessage(ex.Message, Utilities.Utilities.Severity.error);
+                    return;
                 }
             }
         }
 
         protected void btnCheckOut_Click(object sender, EventArgs e)
         {
-            if (BookHasBeenCheckedOut)
+            try
             {
-                base.SetPageMessage("Book has already been checked out.", Utilities.Utilities.Severity.error);
-                return;
-            }
-            else
-            {
-                if(SelectedBook == null)
+                if (BookHasBeenCheckedOut)
                 {
-                    base.SetPageMessage("Book detail not found.", Utilities.Utilities.Severity.error);
+                    base.SetPageMessage("Book has already been checked out.", Utilities.Utilities.Severity.error);
+                    return;
                 }
                 else
                 {
-                    int iResult = base.db.CheckOut(prmBookId, txtBorrowerName.Text, txtMobileNumber.Text, txtNationalId.Text, Convert.ToDateTime(txtCheckoutDate.Text), Convert.ToDateTime(txtCheckinDate.Text));
-                    if(iResult <= 0)
+                    if (SelectedBook == null)
                     {
-                        base.SetPageMessage("Encountered an error while checking out.", Utilities.Utilities.Severity.error);
+                        base.SetPageMessage("Book detail not found.", Utilities.Utilities.Severity.error);
                     }
                     else
                     {
-                        base.SetPageMessage("Book has been checked out in the name of " + txtBorrowerName.Text, Utilities.Utilities.Severity.success);
-                        _CheckOutHistory.Refresh();
-                        CheckedOutSuccessfully = true;
+                        int iResult = base.db.CheckOut(prmBookId, txtBorrowerName.Text, txtMobileNumber.Text, txtNationalId.Text, Convert.ToDateTime(txtCheckoutDate.Text), Convert.ToDateTime(txtCheckinDate.Text));
+                        if (iResult <= 0)
+                        {
+                            base.SetPageMessage("Encountered an error while checking out.", Utilities.Utilities.Severity.error);
+                        }
+                        else
+                        {
+                            base.SetPageMessage("Book has been checked out in the name of " + txtBorrowerName.Text, Utilities.Utilities.Severity.success);
+                            _CheckOutHistory.Refresh();
+                            CheckedOutSuccessfully = true;
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                base.logger.SaveException(ex.Message);
+                base.SetPageMessage(ex.Message, Utilities.Utilities.Severity.error);
+                return;
             }
         }
     }

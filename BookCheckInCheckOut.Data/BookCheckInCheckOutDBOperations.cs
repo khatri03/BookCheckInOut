@@ -14,47 +14,58 @@ namespace BookCheckInCheckOut.Data
         private new void initialize()
         {
             try
-            {
+            {                
                 base.initialize();
             }
             catch(Exception ex)
             {
                 //do logging.
-
+                /* Same exception is thrown again. This will make the system to call catch block in business layer
+                 as all methods in business layer are surrounded with try/catch block*/
+                throw ex;
             }
         }
 
 
         public IDataReader RetrieveBooksList()
         {
-            IDataReader reader = null;
-            SqlCommand command = new SqlCommand();
-
             try
             {
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = Constants.SP_RetrieveBooks;
-                reader = base.ExecuteReader(command);
-            }
-            catch (System.Data.SqlClient.SqlException ex)
-            {
-                throw new Exception("Oops! Something went wrong.");
-            }
-            catch(Exception ex)
-            {
-                //Do logging..
+                IDataReader reader = null;
+                SqlCommand command = new SqlCommand();
 
-                if (!reader.IsClosed)
-                    reader.Close();
-                reader.Dispose();
+                try
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = Constants.SP_RetrieveBooks;
+                    reader = base.ExecuteReader(command);
+                }
+                catch (System.Data.SqlClient.SqlException ex)
+                {
+                    throw new Exception("Oops! Something went wrong.");
+                }
+                catch (Exception ex)
+                {
+                    //Do logging..
+
+                    if (!reader.IsClosed)
+                        reader.Close();
+                    reader.Dispose();
+                }
+                finally
+                {
+                    command.Dispose();
+                }
+
+                return reader;
             }
-            finally
+            catch (Exception ex)
             {
-                command.Dispose();
+                //do logging.
+                /* Same exception is thrown again. This will make the system to call catch block in business layer
+                 as all methods in business layer are surrounded with try/catch block*/
+                throw ex;
             }
-
-            return reader;
-
         }
 
 
@@ -75,13 +86,16 @@ namespace BookCheckInCheckOut.Data
             {
                 throw new Exception("Oops! Something went wrong.");
             }
-            catch
+            catch(Exception ex)
             {
                 //Do logging..
 
                 if (!reader.IsClosed)
                     reader.Close();
                 reader.Dispose();
+                /* Same exception is thrown again. This will make the system to call catch block in business layer
+                 as all methods in business layer are surrounded with try/catch block*/
+                throw ex;
             }
             finally
             {
@@ -110,13 +124,16 @@ namespace BookCheckInCheckOut.Data
             {
                 throw new Exception("Oops! Something went wrong.");
             }
-            catch
+            catch(Exception ex)
             {
                 //Do logging..
 
                 if (!reader.IsClosed)
                     reader.Close();
                 reader.Dispose();
+                /* Same exception is thrown again. This will make the system to call catch block in business layer
+                 as all methods in business layer are surrounded with try/catch block*/
+                throw ex;
             }
             finally
             {
@@ -143,12 +160,16 @@ namespace BookCheckInCheckOut.Data
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
-                throw new Exception("Oops! Something went wrong.");
+                /* Same exception is thrown again. This will make the system to call catch block in business layer
+                  as all methods in business layer are surrounded with try/catch block*/
+                throw ex;
             }
-            catch
+            catch(Exception ex)
             {
                 //Do logging..
-
+                /* Same exception is thrown again. This will make the system to call catch block in business layer
+                 as all methods in business layer are surrounded with try/catch block*/
+                throw ex;
 
             }
             finally
@@ -183,11 +204,16 @@ namespace BookCheckInCheckOut.Data
             catch (System.Data.SqlClient.SqlException ex)
             {
                 throw new Exception("Oops something went wrong.");
+                /* Same exception is thrown again. This will make the system to call catch block in business layer
+                 as all methods in business layer are surrounded with try/catch block*/
+                throw ex;
             }
-            catch
+            catch(Exception ex)
             {
                 //Do logging..
-
+                /* Same exception is thrown again. This will make the system to call catch block in business layer
+                 as all methods in business layer are surrounded with try/catch block*/
+                throw ex;
 
             }
             finally

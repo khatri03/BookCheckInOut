@@ -21,6 +21,19 @@ namespace BookCheckInCheckOut.Web.Core
             }
         }
 
+        private BusinessLogicExceptionOperations _exceptionLogger = null;
+        protected BusinessLogicExceptionOperations exceptionLogger
+        {
+            get
+            {
+                if (_exceptionLogger == null)
+                {
+                    _exceptionLogger = new BusinessLogicExceptionOperations();
+                }
+                return _exceptionLogger;
+            }
+        }
+
         public T GetViewState<T>(string sKey, T defaultValue)
         {
             string sVsKey = string.Concat(this.ClientID, "_", sKey);

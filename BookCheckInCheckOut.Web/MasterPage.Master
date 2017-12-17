@@ -33,7 +33,7 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <link href="<%=ResolveClientUrl("~/Contents/bookinout.css") %>" rel="stylesheet" />
+    <link href="<%=ResolveClientUrl(string.Format("~/Contents/bookinout.css?v={0}", DateTime.Now.Ticks)) %>" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -62,7 +62,10 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-block">
-                                <asp:Label ID="lblMessage" runat="server"></asp:Label>
+                                <div class="text-center">
+                                    <asp:Label ID="lblMessage" runat="server" CssClass="page-message"></asp:Label>
+                                </div>
+                                
                                 <form id="form1" runat="server">
                                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                                     </asp:ContentPlaceHolder>

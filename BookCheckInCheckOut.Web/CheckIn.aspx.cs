@@ -73,7 +73,7 @@ namespace BookCheckInCheckOut.Web
 
         private void DisplayBorrowerDeails()
         {
-            if(SelectedBook != null)
+            if (SelectedBook != null)
             {
                 txtBookTitle.Text = SelectedBook.Title;
             }
@@ -88,8 +88,8 @@ namespace BookCheckInCheckOut.Web
 
                 //double penaltyAmount = calcultePenaltyAmount(DateTime.Now, borrower.ReturnDate);
                 //lblPenaltyAmount.Text = String.Format("{0:#,##0.00}", penaltyAmount);
-                
-                
+
+
                 double penaltyAmount = 0;
                 int iExceedDaysCount = borrower.ReturnDate.AddDays(1).CountBusinessDaysFrom(DateTime.Now);
                 if (iExceedDaysCount > 0)
@@ -107,24 +107,42 @@ namespace BookCheckInCheckOut.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-                DisplayBorrowerDeails();
+                try
+                {
+                    DisplayBorrowerDeails();
+                }
+                catch (Exception ex)
+                {
+                    base.logger.SaveException(ex.Message);
+                    base.SetPageMessage(ex.Message, Utilities.Utilities.Severity.error);
+                    return;
+                }
             }
         }
 
         protected void btnCheckin_Click(object sender, EventArgs e)
         {
-            int result = base.db.CheckIn(prmBookId);
-
-            if (result == 0)
+            try
             {
-                base.SetPageMessage("Encountered an error while checking in.", Utilities.Utilities.Severity.error);
+                int result = base.db.CheckIn(prmBookId);
+
+                if (result == 0)
+                {
+                    base.SetPageMessage("Encountered an error while checking in.", Utilities.Utilities.Severity.error);
+                    return;
+                }
+
+                base.SetPageMessage("Book has been checked in successfully.", Utilities.Utilities.Severity.success);
+                CheckedInSuccessfully = true;
+            }
+            catch (Exception ex)
+            {
+                base.logger.SaveException(ex.Message);
+                base.SetPageMessage(ex.Message, Utilities.Utilities.Severity.error);
                 return;
             }
-
-            base.SetPageMessage("Book has been checked in successfully.", Utilities.Utilities.Severity.success);
-            CheckedInSuccessfully = true;
         }
     }
 }

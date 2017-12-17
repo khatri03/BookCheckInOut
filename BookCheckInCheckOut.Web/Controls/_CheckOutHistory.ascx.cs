@@ -50,10 +50,18 @@ namespace BookCheckInCheckOut.Web.Controls
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            try
             {
-                BindBookBorrowHistory();
+                if (!IsPostBack)
+                {
+                    BindBookBorrowHistory();
+                }
             }
+            catch(Exception ex)
+            {
+                base.exceptionLogger.SaveException(ex.Message);
+            }
+            
         }
     }
 }

@@ -691,8 +691,6 @@
     <Content Include="Contents\material-lite\scss\style.scss" />
     <Content Include="Contents\material-lite\scss\variable.scss" />
     <Content Include="Contents\material-lite\scss\widgets.scss" />
-    <Content Include="TestPage.aspx" />
-    <Content Include="WebForm1.aspx" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="HomePage.aspx" />
     <Content Include="Scripts\jquery-1.12.4.js" />
@@ -817,21 +815,7 @@
       <DependentUpon>Oops.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestPage.aspx.cs">
-      <DependentUpon>TestPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestPage.aspx.designer.cs">
-      <DependentUpon>TestPage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Utilities\Utilities.cs" />
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

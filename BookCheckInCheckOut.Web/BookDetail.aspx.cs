@@ -105,15 +105,13 @@ namespace BookCheckInCheckOut.Web
         {
             if (!IsPostBack)
             {
-                DopageLoadSettings();
                 try
                 {
-                   
+                    DopageLoadSettings();
                 }
                 catch (Exception ex)
-                {
-                    BusinessLogicExceptionOperations logger = new BusinessLogicExceptionOperations();
-                    logger.SaveException(ex.Message);
+                {                    
+                    base.logger.SaveException(ex.Message);
                     base.SetPageMessage(ex.Message, Utilities.Utilities.Severity.error);
                     return;
                 }

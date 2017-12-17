@@ -77,6 +77,19 @@ namespace BookCheckInCheckOut.Web.Core
             }
         }
 
+        private BusinessLogicExceptionOperations _logger = null;
+        protected BusinessLogicExceptionOperations logger
+        {
+            get
+            {
+                if(_logger == null)
+                {
+                    _logger = new BusinessLogicExceptionOperations();
+                }
+                return _logger;
+            }
+        }
+
         protected Label lblMessage
         {
             get
